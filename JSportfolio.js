@@ -2,7 +2,7 @@
 const circle = document.getElementById('circle');
 circle.style.pointerEvents = 'none';
 
-document.addEventListener('mousemove', (e) => {
+document.addEventListener('mousemove', (e) => { 
     const height = circle.offsetHeight;
     const width = circle.offsetWidth;
 
