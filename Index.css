@@ -1,0 +1,169 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    background-image: repeating-linear-gradient(
+    to right,       /* vertical lines */
+    #333 0px,       /* line color */
+    #333 1px,       /* line thickness */
+    transparent 1px,
+    transparent 60px /* space between lines */
+); 
+}
+p{
+    font-size: small
+}
+
+h1{
+    font-family: 'Limelight', sans-serif;
+    line-height: 1.3;
+    letter-spacing: 1px;
+}
+
+h3{
+    font-family: 'DM Sans', sans-serif;
+    font-size: medium;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top:0;
+    width: 100%;
+    background: #222;
+    backdrop-filter: blur(10px); /* Adjust blur strength as needed */
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 10px 0;
+}
+
+header nav{
+    display: flex;
+    align-items: center;   /* vertically center logo + links */
+    justify-content: space-between; /* logo left, links right */
+    padding: 0 20px;
+}
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    margin-right: 7%;
+    gap: 10%;
+}
+
+header nav img{
+    width: 35px;
+    align-items: left;
+    margin-left: 30%;
+    transition: transform 0.8s ease-in-out;
+}
+
+header nav img:hover {
+  transform: rotate(360deg);
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    box-shadow: #000000, 5, 5 10;
+
+}
+
+/* Sections */
+.GraphicDesigner{
+    display: flex;
+    color: #ffffff;
+    background: linear-gradient(
+    45deg,
+    #ffffff 0%,     /* pink */
+    #ffffff 40%,    /* pink */
+    #e992cc 70%,    /* white streak */
+    #ffffff 85%,    /* pink */
+    #ffffff 100%    /* pink */
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: background-position 1s ease;
+}
+
+.GraphicDesigner:hover {
+  background-position: -200% center;
+}
+
+section {
+    padding-top:20%;
+    padding: 15% 7% 0%;
+    text-align: left;
+    
+}
+section h1{
+    padding: 10px;
+}
+
+.projects {
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1%;
+}
+
+.project-card {
+    flex: 1 1 45%;
+    padding: 1%;
+    padding-bottom: 30px;
+    width: 300;
+    text-decoration: none;
+    color:#ffffff;
+}
+
+.project-card img{
+    display: block;
+    width: 100%;
+    border-radius: 10%;
+}
+
+.project-card:hover img{
+    scale: 1.05;
+}
+
+
+
+#contact {
+    padding: 10% 10%;
+    text-align: centlefter;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: right;
+    gap: 30px;
+}
+
+.contact-icons a img {
+    width: 25px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.contact-icons a:hover img {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
