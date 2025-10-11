@@ -2,7 +2,7 @@
 
 ## Required DNS Records for GitHub Pages
 
-### A Records (for apex domain)
+### A Records (apex domain)
 ```
 Type: A
 Name: @
