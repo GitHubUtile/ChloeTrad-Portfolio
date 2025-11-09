@@ -60,6 +60,7 @@ header nav img{
     width: 35px;
     align-items: left;
     margin-left: 30%;
+    margin-top: 10%;
     transition: transform 0.8s ease-in-out;
 }
 
@@ -117,7 +118,7 @@ section h1{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1%;
+    gap: 3%;
 }
 
 .project-card {
@@ -127,16 +128,21 @@ section h1{
     width: 300;
     text-decoration: none;
     color:#ffffff;
+    max-width: 50%;
 }
 
 .project-card img{
     display: block;
     width: 100%;
-    border-radius: 10%;
+    border-radius: 2%;
+}
+
+.project-card h3{
+    padding-top: 10px;
 }
 
 .project-card:hover img{
-    scale: 1.05;
+    scale: 1.02;
 }
 
 
