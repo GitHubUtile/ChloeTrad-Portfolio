@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chloe'sPortfolio</title>
+    <title>Chloe's Portfolio</title>
     <link rel="icon" href="Icons/C clef w.png">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
@@ -14,60 +14,90 @@
             <a href="index.html">
                 <img src="Icons/C clef w shadow.png" alt="Icon">
             </a>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://docs.google.com/document/d/1UcgSaCreGJDfwWUJOSOpHLnN5pe0x8RrrfBu0L4gPvc/edit?usp=sharing">Resume</a></li>                
-            </ul>
         </nav>
     </header>
+
+    <div class="scroll-nav">
+        <div class="scroll-track">
+            <div class="scroll-progress"></div>
+        </div>
+        <ul class="scroll-links">
+            <li data-target="#about">About</li>
+            <li data-target="#portfolio">Portfolio</li>
+            <li data-target="#resume">Resume</li>
+            <li data-target="#contact">Contact</li>
+        </ul>
+    </div>
 
     <section id="about">
         <div class="GraphicDesigner">
             <h1>Apprentic Graphic Designer ✧⋆˙⟡</h1>
         </div>
-        <h3>Hey there! Chloe here — <br> technically in my second year, but no one waits for a degree to do what they love.</h3>
+        <h3 style="padding-bottom:9%; padding-left:10%;">
+            Hey there! Chloe here — 
+            <br> technically in my second year, but no one waits for a degree to do what they love.
+        </h3>
     </section>
 
     <section id="portfolio">
-        <h3>Portfolio</h3>
+        <h3 style="padding-left: 4%; padding-top: 1%; padding-bottom: 0%;">Portfolio</h3>
         <div class="projects">
             <a href="3dAnim.html" class="project-card">
                 <img src="ProjectsDisplayPics/3DTramway.jpg" alt="Project 1">
                 <h3>3D Animation</h3>
                 <p>2025</p>
             </a>
+            <a href="branding.html" class="project-card">
+                <img src="ProjectsDisplayPics/BrandingShifit.png" alt="Project 2">
+                <h3>Branding - Shifit</h3>
+                <p>2025</p>
+            </a>
+            <a href="Animations.html" class="project-card">
+                <img src="ProjectsDisplayPics/Animations.png" alt="Project 5">
+                <h3>2D Animations</h3>
+                <p>2025</p>
+            </a>
             <a href="TuneDay.html" class="project-card">
-                <img src="ProjectsDisplayPics/TuneDay.png" alt="Project 1">
+                <img src="ProjectsDisplayPics/TuneDay.png" alt="Project 3">
                 <h3>TuneDay</h3>
                 <p>2025</p>
-            </a>.
+            </a>
             <a href="Internship.html" class="project-card">
-                <img src="ProjectsDisplayPics/Internship.png" alt="Project 2">
+                <img src="ProjectsDisplayPics/Internship.png" alt="Project 4">
                 <h3>Internship</h3>
                 <p>2024</p>
             </a>
-            <a href="Animations.html" class="project-card">
-                <img src="ProjectsDisplayPics/Animations.png" alt="Project 1">
-                <h3>Animations</h3>
-                <p>2024</p>
-            </a>
             <a href="WoodShop.html" class="project-card">
-                <img src="ProjectsDisplayPics/Wood.png" alt="Project 2">
+                <img src="ProjectsDisplayPics/Wood.png" alt="Project 6">
                 <h3>Wood Shop Storage</h3>
                 <p>2023</p>
             </a>
             <a href="PoetryType.html" class="project-card">
-                <img src="ProjectsDisplayPics/Type.png" alt="Project 1">
+                <img src="ProjectsDisplayPics/Type.png" alt="Project 7">
                 <h3>Visual Poetry and Typography</h3>
                 <p>2025</p>
             </a>
             <a href="PersonalProjects.html" class="project-card">
-                <img src="ProjectsDisplayPics/PersonalProjects.png" alt="Project 2">
+                <img src="ProjectsDisplayPics/PersonalProjects.png" alt="Project 8">
                 <h3>Personal Side Projects</h3>
                 <p>2020-Now</p>
             </a>
+        </div>
+    </section>
+
+    <section id="resume">
+        <h3 style="padding-left: 4%; padding-top: 1%; padding-bottom: 0%;">Resume</h3>
+        <div class="resume-wrapper">
+            <object
+                data="Icons/ChloeTrad2026-Resume.pdf"
+                type="application/pdf"
+                class="pd">
+                <a href="https://docs.google.com/document/d/1UcgSaCreGJDfwWUJOSOpHLnN5pe0x8RrrfBu0L4gPvc/edit?usp=sharing"
+                   target="_blank"
+                   class="lin">
+                   🖨️ Browser does not support PDFs. Click here to open it!
+                </a>
+            </object>
         </div>
     </section>
 

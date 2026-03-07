@@ -40,6 +40,7 @@ header {
     -webkit-backdrop-filter: blur(10px);
     color: #fff;
     padding: 10px 0;
+    z-index: 100;
 }
 
 header nav{
@@ -68,17 +69,12 @@ header nav img:hover {
   transform: rotate(360deg);
 }
 
+
+
 header nav a {
-    color: #ffffff;
     text-decoration: none;
 }
 
-header nav a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-    box-shadow: #000000, 5, 5 10;
-
-}
 
 /* Sections */
 .GraphicDesigner{
@@ -103,32 +99,31 @@ header nav a:hover {
   background-position: -200% center;
 }
 
-section {
-    padding-top:20%;
-    padding: 15% 7% 0%;
-    text-align: left;
-    
-}
 section h1{
-    padding: 10px;
+    padding-top: 25%;
+    padding-left: 15%;
 }
 
+
 .projects {
-    padding-top: 2%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 3%;
+    margin: 3%;
 }
 
 .project-card {
     flex: 1 1 45%;
-    padding: 1%;
+    padding: 0%;
     padding-bottom: 30px;
     width: 300;
     text-decoration: none;
     color:#ffffff;
-    max-width: 50%;
+    max-width: 40%;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .project-card img{
@@ -143,6 +138,12 @@ section h1{
 
 .project-card:hover img{
     scale: 1.02;
+    z-index: 10;
+}
+
+.project-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
@@ -166,4 +167,117 @@ section h1{
 .contact-icons a:hover img {
     transform: scale(1.2);
     opacity: 0.8;
+}
+
+/* Vertical scroll navigation */
+.scroll-nav {
+    position: fixed;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 260px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 200;
+}
+
+.scroll-track {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    transform: none;
+    width: 4px;
+    border-radius: 999px;
+    background-color: #444; /* dark grey base line */
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.scroll-progress {
+    width: 100%;
+    height: 0;
+    background-color: #ccc; /* light grey fill */
+    border-radius: inherit;
+    transition: height 0.2s ease-out;
+}
+
+.scroll-links {
+    position: relative;
+    list-style: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 28px;
+    font-size: 0.75rem;
+}
+
+.scroll-links li {
+    cursor: pointer;
+    color: #aaaaaa;
+    transition: color 0.2s ease-out;
+}
+
+.scroll-links li:hover {
+    color: #ffffff;
+}
+
+.scroll-links li.active {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Resume embed */
+
+
+.pd {
+    flex: 1 1 100%;
+    padding: 5% 11% 0;
+    display: block;
+    width: 100%;        /* fill the project-card / flex column */
+    height: auto;       /* let height be calculated from width */
+    margin: auto;
+    aspect-ratio: 99/63;/* pick a ratio you like (e.g. 3:4, 4:5) */
+  }
+
+  .lin{
+    display: flex;
+    justify-content: space-between;
+    color: #e992cc;
+    background: linear-gradient(
+    45deg,
+    #e992cc 0%,     
+    #e992cc 40%,    
+    #ffffff 70%, 
+    #e992cc 85%,   
+    #e992cc 100%    
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: background-position 1s ease;
+    text-decoration: none;
+  }
+  
+  .lin:hover {
+  background-position: -200% center;
+  transform: 1.4;
+  }
+
+/* Responsive tweaks for scroll nav */
+@media (max-width: 768px) {
+    .scroll-nav {
+        right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-nav {
+        display: none;
+    }
 }

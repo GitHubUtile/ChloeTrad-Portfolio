@@ -40,6 +40,7 @@ body {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
+  margin: 40px;
 }
 
 .project-image img {
@@ -60,6 +61,7 @@ body {
 .project-info p {
   margin-bottom: 15px;
   color: #bbb;
+  text-decoration: none;
 }
 
 /* Buttons */
@@ -85,6 +87,31 @@ body {
 .btn:hover {
   background-position: -200% center;
   transform: 1.4;
+}
+
+.lin{
+  display: flex;
+  justify-content: space-between;
+  color: #e992cc;
+  background: linear-gradient(
+  45deg,
+  #e992cc 0%,     
+  #e992cc 40%,    
+  #ffffff 70%, 
+  #e992cc 85%,   
+  #e992cc 100%    
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: background-position 1s ease;
+  text-decoration: none;
+}
+
+.lin:hover {
+background-position: -200% center;
+transform: 1.4;
 }
 
 /* Scrolling Tags */
@@ -118,6 +145,16 @@ body {
   color: #000;
   flex-shrink: 0;
 }
+
+.pd {
+  flex: 1 1 100%;
+  display: block;
+  width: 90%;        /* fill the project-card / flex column */
+  height: auto;       /* let height be calculated from width */
+  margin: auto;
+  aspect-ratio: 99/63;/* pick a ratio you like (e.g. 3:4, 4:5) */
+}
+
 
 /* Seamless loop */
 @keyframes scroll-left {
@@ -156,6 +193,7 @@ body {
 .nav-btn {
   min-width: 180px;
   text-align: center;
+  text-decoration: none;
 }
 
 /* Responsive */
