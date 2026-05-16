@@ -1,0 +1,97 @@
+{
+  "slug": "shifit",
+  "number": "01",
+  "title": {
+    "en": "Shifit - Festival Identity",
+    "fr": "Shifit - Identité de festival"
+  },
+  "tagline": {
+    "en": "Identity for a multidisciplinary design and film festival.",
+    "fr": "Identité pour un festival pluridisciplinaire de design et de cinéma."
+  },
+  "discipline": [
+    "branding",
+    "identity"
+  ],
+  "year": "2025",
+  "role": {
+    "en": "Identity designer, Creator",
+    "fr": "Designer d'identité, Créatrice"
+  },
+  "client": "Shifit",
+  "tools": [
+    "Adobe Illustrator",
+    "Adobe Photoshop",
+    "Adobe InDesign"
+  ],
+  "accent": "#E85A2B",
+  "featured": true,
+  "order": 1,
+  "cover": "/images/thumbnails/shifit.png",
+  "brief": {
+    "en": "Shifit is a design festival spanning architecture, interior design, graphic design, fashion, fine arts, and the art of film. The identity needed to feel like a single voice that could speak across all six disciplines without flattening any of them - built from a flexible mark, a stationery system, a merch range, and a complete set of brand guidelines.",
+    "fr": "Shifit est un festival de design réunissant architecture, design d'intérieur, design graphique, mode, beaux-arts et art du cinéma. L'identité devait incarner une seule voix capable de traverser six disciplines sans en aplatir aucune - construite autour d'une marque flexible, d'une papeterie, d'une gamme merch et d'un guide de marque complet."
+  },
+  "sections": [
+    {
+      "type": "image-full",
+      "src": "/images/thumbnails/shifit.png",
+      "caption": {
+        "en": "Shifit identity system - mark, stationery, merch.",
+        "fr": "Système d'identité Shifit - marque, papeterie, merch."
+      }
+    },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "Six disciplines, one voice. The mark stays still while everything around it moves.",
+        "fr": "Six disciplines, une voix. La marque reste fixe ; tout ce qui l'entoure bouge."
+      }
+    },
+    {
+      "type": "deliverables",
+      "items": [
+        {
+          "en": "Process",
+          "fr": "Processus"
+        },
+        {
+          "en": "Moodboard",
+          "fr": "Moodboard"
+        },
+        {
+          "en": "Mindmap",
+          "fr": "Mindmap"
+        },
+        {
+          "en": "Stationery",
+          "fr": "Papeterie"
+        },
+        {
+          "en": "Merch",
+          "fr": "Merch"
+        },
+        {
+          "en": "Brand guidelines",
+          "fr": "Charte graphique"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "label": {
+        "en": "Brand guidelines (PDF)",
+        "fr": "Charte graphique (PDF)"
+      },
+      "url": "https://drive.google.com/file/d/1OjXZD5XGiJKlNwLEH4kmCTLO_uJZtQ-B/view?usp=drive_link"
+    },
+    {
+      "label": {
+        "en": "Process document (PDF)",
+        "fr": "Document de processus (PDF)"
+      },
+      "url": "https://drive.google.com/file/d/1SXukIOQBtEaST2Lwv1L_TyULgjv2F2cX/view?usp=drive_link"
+    }
+  ]
+}
