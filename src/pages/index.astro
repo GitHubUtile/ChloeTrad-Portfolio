@@ -1,0 +1,10 @@
+---
+// Instant redirect to default locale — JS fires before paint, meta is a no-JS fallback
+---
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <script is:inline>window.location.replace('/en/');</script>
+  </head>
+</html>
