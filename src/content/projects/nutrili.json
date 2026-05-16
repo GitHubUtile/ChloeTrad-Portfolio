@@ -1,0 +1,55 @@
+{
+  "slug": "nutrili",
+  "number": "06",
+  "title": {
+    "en": "Nutrili — A Three-Month Internship",
+    "fr": "Nutrili — Stage de trois mois"
+  },
+  "tagline": {
+    "en": "Print, packaging and social for a Dubai supplements brand.",
+    "fr": "Print, packaging et social pour une marque de compléments alimentaires à Dubaï."
+  },
+  "discipline": ["print", "branding"],
+  "year": "2024",
+  "role": {
+    "en": "Design intern",
+    "fr": "Stagiaire design"
+  },
+  "client": "Nutrili (Dubai-based supplements company)",
+  "tools": ["Adobe Photoshop", "Adobe Illustrator", "Adobe After Effects", "Teamwork"],
+  "accent": "#6FAE5C",
+  "featured": false,
+  "order": 6,
+  "cover": "/images/thumbnails/nutrili.png",
+  "brief": {
+    "en": "Three months inside Nutrili, a Dubai-based supplements startup. I moved across flyers, packaging, email design, ad creative and social — small enough team that the work landed in production, large enough that the brand had to hold across very different surfaces. A first look at what teamwork inside a real design system actually feels like before university even started.",
+    "fr": "Trois mois chez Nutrili, une startup de compléments alimentaires basée à Dubaï. Je suis passée des flyers au packaging, aux emails, aux visuels publicitaires et aux réseaux sociaux — une équipe assez petite pour que le travail parte vraiment en production, assez grande pour que la marque doive tenir sur des surfaces très différentes. Un premier aperçu du travail en équipe à l'intérieur d'un vrai système de marque, avant même le début de la fac."
+  },
+  "sections": [
+    { "type": "image-full", "src": "/images/projects/nutrili/1.png",
+      "caption": { "en": "Flyers and ad creative.", "fr": "Flyers et visuels publicitaires." } },
+    { "type": "image-full", "src": "/images/projects/nutrili/2.gif",
+      "caption": { "en": "Animated social.", "fr": "Posts animés pour les réseaux." } },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "A small team taught me what brand consistency actually costs.",
+        "fr": "Une petite équipe m'a appris ce que la cohérence de marque coûte vraiment."
+      }
+    },
+    { "type": "image-pair", "left": "/images/projects/nutrili/3.png", "right": "/images/projects/nutrili/4.png",
+      "caption": { "en": "Capsule labels and box sleeve.", "fr": "Étiquettes de capsules et fourreau." } },
+    {
+      "type": "deliverables",
+      "items": [
+        { "en": "Posters",            "fr": "Affiches" },
+        { "en": "Emails",             "fr": "Emails" },
+        { "en": "Labels",             "fr": "Étiquettes" },
+        { "en": "Boxes",              "fr": "Packaging" },
+        { "en": "Advertisements",     "fr": "Publicités" },
+        { "en": "Social media posts", "fr": "Posts sociaux" }
+      ]
+    }
+  ],
+  "resources": []
+}

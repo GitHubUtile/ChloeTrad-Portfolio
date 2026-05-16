@@ -1,0 +1,49 @@
+{
+  "slug": "evolution-vs-nature",
+  "number": "04",
+  "title": {
+    "en": "Evolution vs Nature",
+    "fr": "Évolution vs Nature"
+  },
+  "tagline": {
+    "en": "First 3D animation — Beirut in the 1960s, in Blender.",
+    "fr": "Première animation 3D — Beyrouth dans les années 1960, sous Blender."
+  },
+  "discipline": ["motion", "illustration"],
+  "year": "2025",
+  "role": {
+    "en": "Creator",
+    "fr": "Créatrice"
+  },
+  "client": "",
+  "tools": ["Blender", "3D modeling", "UV unwrapping", "Camera animation", "Lighting"],
+  "accent": "#20A4C9",
+  "featured": false,
+  "order": 4,
+  "cover": "/images/thumbnails/evolution-vs-nature.jpg",
+  "brief": {
+    "en": "A Blender animation set in Beirut in the 1960s — when trees and nature still dominated the city, the tramway was still in service, and a thin layer of snow could cover even the urban centre. The first 3D piece I made; an excuse to learn modeling, texture, lighting and camera motion in one go.",
+    "fr": "Une animation Blender située à Beyrouth dans les années 1960 — quand les arbres et la nature dominaient encore la ville, que le tramway circulait toujours, et qu'une mince couche de neige pouvait recouvrir jusqu'au centre. Première pièce 3D que j'ai réalisée ; un prétexte pour apprendre la modélisation, la texture, l'éclairage et les mouvements de caméra d'un seul coup."
+  },
+  "sections": [
+    { "type": "image-full", "src": "/images/thumbnails/evolution-vs-nature.jpg",
+      "caption": { "en": "Beirut, 1960s — tramway and falling snow.", "fr": "Beyrouth, années 1960 — tramway et neige." } },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "A city remembered, then rebuilt one polygon at a time.",
+        "fr": "Une ville qu'on se rappelle, puis qu'on reconstruit un polygone à la fois."
+      }
+    },
+    {
+      "type": "deliverables",
+      "items": [
+        { "en": "Process",      "fr": "Processus" },
+        { "en": "Moodboard",    "fr": "Moodboard" },
+        { "en": "Mindmap",      "fr": "Mindmap" },
+        { "en": "Animations",   "fr": "Animations" }
+      ]
+    }
+  ],
+  "resources": []
+}

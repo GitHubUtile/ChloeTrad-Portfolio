@@ -1,0 +1,51 @@
+{
+  "slug": "wood-shop",
+  "number": "07",
+  "title": {
+    "en": "Wood Shop — Inventory Tracker",
+    "fr": "Wood Shop — Suivi d'inventaire"
+  },
+  "tagline": {
+    "en": "An inventory app for merchants, designed to replace Excel.",
+    "fr": "Une application d'inventaire pour commerçants, pensée pour remplacer Excel."
+  },
+  "discipline": ["ui"],
+  "year": "2023",
+  "role": {
+    "en": "UI/UX Designer",
+    "fr": "Designer UI/UX"
+  },
+  "client": "",
+  "tools": ["Adobe XD", "Adobe Illustrator", "Design system", "Product design"],
+  "accent": "#9C6B3F",
+  "featured": false,
+  "order": 7,
+  "cover": "/images/projects/wood-shop/2.png",
+  "brief": {
+    "en": "Wood Shop is an inventory-tracker application designed for sellers who still live inside Excel spreadsheets. The goal was to give them better organisation, a clearer display, and the kind of structure that lets a small business actually see what it has — without asking them to learn an enterprise tool.",
+    "fr": "Wood Shop est une application de suivi d'inventaire conçue pour les vendeurs qui vivent encore dans des feuilles Excel. L'objectif : meilleure organisation, affichage plus clair, et une structure qui permet à une petite entreprise de voir vraiment ce qu'elle possède — sans lui demander d'apprendre un outil d'entreprise."
+  },
+  "sections": [
+    { "type": "image-full", "src": "/images/projects/wood-shop/1.gif",
+      "caption": { "en": "Inventory dashboard interactions.", "fr": "Interactions du tableau d'inventaire." } },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "The goal was Excel without the cells.",
+        "fr": "L'objectif : Excel, sans les cellules."
+      }
+    },
+    { "type": "image-pair", "left": "/images/projects/wood-shop/2.png", "right": "/images/projects/wood-shop/3.png",
+      "caption": { "en": "Dashboard and detail views.", "fr": "Vues d'ensemble et détail." } },
+    {
+      "type": "deliverables",
+      "items": [
+        { "en": "Application design",    "fr": "Design d'application" },
+        { "en": "Mock-ups & animations", "fr": "Mockups & animations" },
+        { "en": "Fonts",                 "fr": "Caractères" },
+        { "en": "Color palette",         "fr": "Palette" }
+      ]
+    }
+  ],
+  "resources": []
+}

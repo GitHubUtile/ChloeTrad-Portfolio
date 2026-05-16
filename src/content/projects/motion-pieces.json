@@ -1,0 +1,62 @@
+{
+  "slug": "motion-pieces",
+  "number": "05",
+  "title": {
+    "en": "Motion Pieces — Title Sequences & Loops",
+    "fr": "Pièces motion — génériques & boucles"
+  },
+  "tagline": {
+    "en": "Three short After Effects pieces: Tom & Jerry, Rise of the Guardians, Bubblegum.",
+    "fr": "Trois courtes pièces After Effects : Tom & Jerry, Rise of the Guardians, Bubblegum."
+  },
+  "discipline": ["motion"],
+  "year": "2024–2025",
+  "role": {
+    "en": "Animator, Creator",
+    "fr": "Animatrice, Créatrice"
+  },
+  "client": "",
+  "tools": ["Adobe After Effects", "Adobe Illustrator", "Sound design"],
+  "accent": "#D8316C",
+  "featured": false,
+  "order": 5,
+  "cover": "/images/thumbnails/motion-pieces.png",
+  "brief": {
+    "en": "Three short motion exercises. A title sequence for Tom & Jerry (Hanna and Barbera) and another for Rise of the Guardians (Peter Ramsey, David Lindsay-Abaire), both in After Effects. And a looping bubblegum balloon piece — the earliest of the three, made to understand how loops and warps behave inside AE.",
+    "fr": "Trois courts exercices motion. Un générique pour Tom & Jerry (Hanna et Barbera) et un autre pour Rise of the Guardians (Peter Ramsey, David Lindsay-Abaire), tous deux sous After Effects. Et une boucle de ballons de bubblegum — la plus ancienne des trois, réalisée pour comprendre le comportement des loops et des déformations dans AE."
+  },
+  "sections": [
+    { "type": "image-full", "src": "/images/thumbnails/motion-pieces.png",
+      "caption": { "en": "Three title-sequence stills.", "fr": "Trois plans de génériques." } },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "Twelve seconds is enough to say something, if you know what you're saying.",
+        "fr": "Douze secondes suffisent à dire quelque chose, à condition de savoir quoi."
+      }
+    },
+    {
+      "type": "deliverables",
+      "items": [
+        { "en": "Process",      "fr": "Processus" },
+        { "en": "Storyboard",   "fr": "Storyboard" },
+        { "en": "Sound design", "fr": "Sound design" },
+        { "en": "Animations",   "fr": "Animations" }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "label": { "en": "Tom & Jerry title sequence (video)", "fr": "Générique Tom & Jerry (vidéo)" },
+      "url": "https://drive.google.com/file/d/1PP7B6CKLwPpfi_NwF5cllDgyNnogYryI/view?usp=drive_link"
+    },
+    {
+      "label": { "en": "Rise of the Guardians title sequence (video)", "fr": "Générique Rise of the Guardians (vidéo)" },
+      "url": "https://drive.google.com/file/d/1lbj8S2yVOF6lzouOlUGymh2XXSEVaNVl/view?usp=drive_link"
+    },
+    {
+      "label": { "en": "Process document (PDF)", "fr": "Document de processus (PDF)" },
+      "url": "https://drive.google.com/file/d/1lFox-_fG5cysiFHeizICyA_CnalnxBUx/view?usp=drive_link"
+    }
+  ]
+}

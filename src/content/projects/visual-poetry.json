@@ -1,0 +1,54 @@
+{
+  "slug": "visual-poetry",
+  "number": "02",
+  "title": {
+    "en": "Visual Poetry & Bilingual Typography",
+    "fr": "Poésie visuelle & typographie bilingue"
+  },
+  "tagline": {
+    "en": "Typographic systems in Latin and Arabic.",
+    "fr": "Systèmes typographiques en latin et en arabe."
+  },
+  "discipline": ["typography", "print"],
+  "year": "2025",
+  "role": {
+    "en": "Designer, Creator",
+    "fr": "Designer, Créatrice"
+  },
+  "client": "",
+  "tools": ["Adobe Illustrator", "Typography", "Arabic scripts", "Print"],
+  "accent": "#1A1614",
+  "featured": true,
+  "order": 2,
+  "cover": "/images/projects/visual-poetry/1.jpg",
+  "brief": {
+    "en": "Two typographic projects sit side by side. The first takes my Arabic initials, sets them in several Arabic scripts, and merges them into a single logo from which motifs are then generated. The second is a bilingual typographic interpretation of two poems — كن جميلا (Be Beautiful) by Elia Abu Madi, and Élévation by Charles Baudelaire — where the type is bent to carry the meaning of the line.",
+    "fr": "Deux projets typographiques face à face. Le premier prend mes initiales arabes, les compose dans plusieurs scripts, puis les fusionne en un logo unique d'où sont ensuite tirés des motifs. Le second est une interprétation typographique bilingue de deux poèmes — كن جميلا (Sois belle) d'Elia Abu Madi et Élévation de Charles Baudelaire — où la typographie est tordue pour porter le sens du vers."
+  },
+  "sections": [
+    { "type": "image-full",  "src": "/images/projects/visual-poetry/1.jpg",
+      "caption": { "en": "Project 1 — motifs from merged Arabic initials.", "fr": "Projet 1 — motifs issus des initiales arabes fusionnées." } },
+    { "type": "image-full",  "src": "/images/projects/visual-poetry/2.jpg",
+      "caption": { "en": "Project 1, continued.", "fr": "Projet 1, suite." } },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "Pictures show front and back. The poem is meant to be read on both sides.",
+        "fr": "Les images montrent recto et verso. Le poème se lit sur les deux faces."
+      }
+    },
+    { "type": "image-pair", "left": "/images/projects/visual-poetry/3.png", "right": "/images/projects/visual-poetry/4.png",
+      "caption": { "en": "Élévation — Charles Baudelaire.", "fr": "Élévation — Charles Baudelaire." } },
+    { "type": "image-pair", "left": "/images/projects/visual-poetry/5.png", "right": "/images/projects/visual-poetry/6.png",
+      "caption": { "en": "كن جميلا — Elia Abu Madi.", "fr": "كن جميلا — Elia Abu Madi." } },
+    {
+      "type": "deliverables",
+      "items": [
+        { "en": "Trials & research",     "fr": "Essais & recherches" },
+        { "en": "Two final products",    "fr": "Deux produits finis" },
+        { "en": "Fonts & color palette", "fr": "Caractères & palette" }
+      ]
+    }
+  ],
+  "resources": []
+}

@@ -1,0 +1,51 @@
+{
+  "slug": "tuneday",
+  "number": "03",
+  "title": {
+    "en": "TuneDay — Play Your Routine",
+    "fr": "TuneDay — Joue ta routine"
+  },
+  "tagline": {
+    "en": "An AI-powered playlist maker for daily routines.",
+    "fr": "Un générateur de playlists IA pour les routines quotidiennes."
+  },
+  "discipline": ["ui", "branding"],
+  "year": "2025",
+  "role": {
+    "en": "UI/UX Designer, Creator",
+    "fr": "Designer UI/UX, Créatrice"
+  },
+  "client": "Personal stand-alone project",
+  "tools": ["Figma", "Adobe Illustrator", "Design system"],
+  "accent": "#7E5BEF",
+  "featured": true,
+  "order": 3,
+  "cover": "/images/projects/tuneday/1.gif",
+  "brief": {
+    "en": "TuneDay generates a playlist tailored to a specific routine — give it a length and a music preference and it builds, for example, the soundtrack for your twenty-minute morning run. Playlists can then be scheduled across the day, turning a routine into something a little easier to keep, and shared so that habits can be picked up by other people.",
+    "fr": "TuneDay génère une playlist taillée pour une routine précise — donnez-lui une durée et une préférence musicale, et il construit, par exemple, la bande-son de vos vingt minutes de course matinale. Les playlists peuvent ensuite être programmées dans la journée, ce qui rend une routine un peu plus tenable, puis partagées pour que d'autres puissent reprendre l'habitude."
+  },
+  "sections": [
+    { "type": "image-full", "src": "/images/projects/tuneday/1.gif",
+      "caption": { "en": "Routine builder flow.", "fr": "Flux de création de routine." } },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "A routine you can share is a routine that survives Monday.",
+        "fr": "Une routine qu'on peut partager est une routine qui survit au lundi."
+      }
+    },
+    { "type": "image-pair", "left": "/images/projects/tuneday/2.gif", "right": "/images/projects/tuneday/3.gif",
+      "caption": { "en": "Scheduling and playlist screens.", "fr": "Écrans de programmation et de playlist." } },
+    {
+      "type": "deliverables",
+      "items": [
+        { "en": "Application design",      "fr": "Design d'application" },
+        { "en": "Mock-ups & animations",   "fr": "Mockups & animations" },
+        { "en": "Application logo",        "fr": "Logo de l'application" },
+        { "en": "Color palette",           "fr": "Palette" }
+      ]
+    }
+  ],
+  "resources": []
+}

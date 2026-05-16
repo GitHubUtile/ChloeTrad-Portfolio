@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ScrollReveal from '../../../islands/ScrollReveal.tsx';
+import HoverPreviewList from '../../../islands/HoverPreviewList.tsx';
+import WorkViewToggle from '../../../islands/WorkViewToggle.tsx';
+import { type Lang, languages } from '../../../i18n/languages';
+import { useTranslation, getLocalizedPath, getLocalizedContent } from '../../../i18n/utils';
+import { projectsByOrder } from '../../../content/projects';
+import { disciplineLabel, filterChips, type Discipline } from '../../../data/disciplines';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslation(lang);
+
+const rows = projectsByOrder.map((p) => ({
+  slug: p.slug,
+  number: p.number,
+  title: getLocalizedContent(p.title, lang),
+  discipline: p.discipline.map((d) => disciplineLabel[d as Discipline]?.[lang] ?? d).join(' · '),
+  year: p.year,
+  cover: p.cover,
+  href: getLocalizedPath(lang, `/work/${p.slug}`),
+  accent: p.accent,
+  primaryDisciplines: p.discipline,
+}));
+---
+
+<BaseLayout title={t('work.title')} description={t('work.subtitle')} lang={lang}>
+  <section class="pt-32 lg:pt-40 pb-12 lg:pb-16">
+    <div class="container-page">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10 lg:mb-16">
+        <div>
+          <p class="eyebrow mb-4">{t('work.eyebrow')}</p>
+          <h1 class="font-display font-semibold text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight">
+            {t('work.title')}<span class="text-[var(--accent)]">.</span>
+          </h1>
+          <p class="mt-6 text-lg text-[var(--muted)] max-w-prose">{t('work.subtitle')}</p>
+        </div>
+        <WorkViewToggle client:idle labels={{ grid: t('work.view.grid'), list: t('work.view.list') }} />
+      </div>
+
+      <!-- Filter chips -->
+      <div class="flex flex-wrap gap-2 mb-12 lg:mb-16" role="group" aria-label="Filter">
+        {filterChips.map((chip, i) => (
+          <button
+            data-filter={chip.match === 'all' ? 'all' : (chip.match as string[]).join(',')}
+            class:list={[
+              'work-filter px-4 py-2 min-h-[44px] text-xs font-mono uppercase tracking-[0.15em] rounded-full border transition-colors duration-200 cursor-pointer',
+              i === 0
+                ? 'bg-[var(--ink)] text-[var(--bg)] border-[var(--ink)]'
+                : 'text-[var(--ink)] border-[var(--rule)] hover:border-[var(--ink)]'
+            ]}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >
+            {t(chip.key)}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LIST VIEW -->
+  <section data-work-view="list" class="container-page pb-20 lg:pb-32">
+    <ScrollReveal client:visible>
+      <HoverPreviewList
+        client:idle
+        rows={rows}
+        labels={{
+          num: t('work.col.num'),
+          title: t('work.col.title'),
+          discipline: t('work.col.discipline'),
+          year: t('work.col.year'),
+        }}
+      />
+    </ScrollReveal>
+  </section>
+
+  <!-- GRID VIEW -->
+  <section data-work-view="grid" class="container-page pb-20 lg:pb-32">
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 lg:gap-y-16">
+      {rows.map((row, i) => (
+        <li
+          class="work-card group"
+          data-disciplines={row.primaryDisciplines.join(',')}
+        >
+          <a href={row.href} class="block cursor-pointer">
+            <div class="aspect-[4/5] overflow-hidden bg-[var(--surface-alt)] relative">
+              <img
+                src={row.cover}
+                alt={row.title}
+                loading={i < 3 ? 'eager' : 'lazy'}
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.03]"
+              />
+              <div
+                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={`background: linear-gradient(180deg, transparent 50%, ${row.accent}66 100%);`}
+              ></div>
+            </div>
+            <div class="mt-4 flex items-baseline justify-between gap-4">
+              <div>
+                <p class="font-mono text-[0.7rem] text-[var(--muted)] tracking-[0.15em] uppercase mb-1">
+                  {row.number} · {row.discipline}
+                </p>
+                <h3 class="font-display text-xl lg:text-2xl text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors duration-300">
+                  {row.title}
+                </h3>
+              </div>
+              <span class="font-mono text-xs text-[var(--muted)] shrink-0">{row.year}</span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Mobile + tablet: grid is the only view */
+  [data-work-view="list"] { display: none; }
+  [data-work-view="grid"] { display: block; }
+
+  /* Desktop default: list view */
+  @media (min-width: 1024px) {
+    [data-work-view="list"] { display: block; }
+    [data-work-view="grid"] { display: none; }
+
+    /* User preference overrides desktop default */
+    body[data-view="grid"] [data-work-view="grid"] { display: block; }
+    body[data-view="grid"] [data-work-view="list"] { display: none; }
+    body[data-view="list"] [data-work-view="list"] { display: block; }
+    body[data-view="list"] [data-work-view="grid"] { display: none; }
+  }
+</style>
+
+<script is:inline>
+  // Pre-paint: apply stored work view to avoid flash on desktop
+  (function() {
+    try {
+      var v = localStorage.getItem('work-view');
+      if (v === 'list' || v === 'grid') document.body.setAttribute('data-view', v);
+    } catch (e) {}
+  })();
+</script>
+
+<script>
+  // Discipline filter
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.work-filter');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => {
+        b.classList.remove('bg-[var(--ink)]', 'text-[var(--bg)]', 'border-[var(--ink)]');
+        b.classList.add('text-[var(--ink)]', 'border-[var(--rule)]');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('bg-[var(--ink)]', 'text-[var(--bg)]', 'border-[var(--ink)]');
+      btn.classList.remove('text-[var(--ink)]', 'border-[var(--rule)]');
+      btn.setAttribute('aria-pressed', 'true');
+
+      const filter = btn.dataset.filter ?? 'all';
+      const targets = filter === 'all' ? null : filter.split(',');
+
+      // Grid filter
+      document.querySelectorAll<HTMLElement>('.work-card').forEach((card) => {
+        if (!targets) { card.style.display = ''; return; }
+        const disciplines = (card.dataset.disciplines ?? '').split(',');
+        const match = disciplines.some((d) => targets.includes(d));
+        card.style.display = match ? '' : 'none';
+      });
+
+      // List view filter (HoverPreviewList rows live inside its container — they share data-slug)
+      // For v1, just dim/hide the list rows using the same predicate via parent classlist on list items.
+    });
+  });
+</script>

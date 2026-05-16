@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollReveal from '../../islands/ScrollReveal.tsx';
+import BilingualMarquee from '../../islands/BilingualMarquee.tsx';
+import DragScrollReel from '../../islands/DragScrollReel.tsx';
+import { type Lang, languages } from '../../i18n/languages';
+import { useTranslation, getLocalizedPath, getLocalizedContent } from '../../i18n/utils';
+import { featuredProjects, projectsByOrder } from '../../content/projects';
+import { disciplineLabel, type Discipline } from '../../data/disciplines';
+import { siteConfig } from '../../data/siteConfig';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslation(lang);
+
+const rowOne = lang === 'fr'
+  ? ['Identité', 'Typographie', 'Motion', 'UI/UX', 'Édition', 'Print', 'Illustration']
+  : ['Branding', 'Typography', 'Motion', 'UI/UX', 'Editorial', 'Print', 'Illustration'];
+
+const rowTwo = ['الهوية', 'الطباعة', 'الحركة', 'الواجهة', 'التحرير', 'الطباعة الفنية', 'الرسم'];
+
+const reelCards = featuredProjects.map((p) => ({
+  slug: p.slug,
+  title: getLocalizedContent(p.title, lang),
+  discipline: p.discipline.map((d) => disciplineLabel[d as Discipline]?.[lang] ?? d).join(' · '),
+  cover: p.cover,
+  href: getLocalizedPath(lang, `/work/${p.slug}`),
+  year: p.year,
+  accent: p.accent,
+}));
+---
+
+<BaseLayout title={t('hero.role')} description={t('hero.role')} lang={lang}>
+  <!-- HERO — BILINGUAL MARQUEE + VELOCITY -->
+  <section
+    data-hero
+    class="relative pt-32 lg:pt-44 pb-20 lg:pb-32 overflow-hidden"
+  >
+    <div class="container-page">
+      <div class="mb-10 lg:mb-16">
+        <p class="eyebrow mb-4">
+          <span class="text-[var(--accent)] mr-2">●</span>
+          {t('contact.availability')} — {getLocalizedContent(siteConfig.location, lang)}
+        </p>
+        <h1 class="font-display font-semibold text-[clamp(3.25rem,11vw,8.5rem)] leading-[0.95] tracking-tight text-balance">
+          {t('hero.name')}
+          <span class="block italic font-normal text-[var(--muted)] text-[clamp(2rem,7vw,5rem)] mt-2">
+            {lang === 'fr' ? 'designer graphique' : 'graphic designer'}
+          </span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="pt-10 pb-2 border-t border-b border-[var(--rule)]">
+      <BilingualMarquee client:visible rowOne={rowOne} rowTwo={rowTwo} />
+    </div>
+
+    <div class="container-page mt-10 lg:mt-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+      <p class="max-w-md text-[var(--ink)] text-pretty">
+        {lang === 'fr'
+          ? "Designer libanaise — identité, typographie éditoriale, motion et interface. Pratique trilingue : caractères latins et arabes dans la même conversation."
+          : "Lebanese designer — identity, editorial typography, motion and interface. A trilingual practice: Latin and Arabic letterforms in the same conversation."}
+      </p>
+      <div class="flex items-center gap-6">
+        <a href={getLocalizedPath(lang, '/work')} class="btn-primary">{t('home.index.cta')}</a>
+        <a href={getLocalizedPath(lang, '/contact')} class="btn-ghost">{t('home.contact.cta')}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED REEL -->
+  <section class="py-20 lg:py-32">
+    <div class="container-page mb-10 lg:mb-14">
+      <ScrollReveal client:visible>
+        <div class="flex items-baseline justify-between gap-6">
+          <div>
+            <p class="eyebrow mb-3">{t('home.featured.eyebrow')}</p>
+            <h2 class="font-display font-semibold text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] text-balance">
+              {t('home.featured.title')}
+            </h2>
+          </div>
+          <a href={getLocalizedPath(lang, '/work')} class="hidden md:inline-flex btn-ghost">{t('home.index.cta')} →</a>
+        </div>
+      </ScrollReveal>
+    </div>
+
+    <DragScrollReel client:visible cards={reelCards} />
+
+    <div class="container-page mt-8 md:hidden">
+      <a href={getLocalizedPath(lang, '/work')} class="btn-ghost">{t('home.index.cta')} →</a>
+    </div>
+  </section>
+
+  <!-- INDEX TEASER (text-only list) -->
+  <section class="py-20 lg:py-28 border-t border-[var(--rule)]">
+    <div class="container-page">
+      <ScrollReveal client:visible>
+        <div class="mb-10">
+          <p class="eyebrow mb-3">{t('home.index.eyebrow')}</p>
+          <h2 class="font-display font-semibold text-[clamp(2rem,4vw,3rem)] leading-[1.05]">
+            {t('home.index.title')}
+          </h2>
+        </div>
+      </ScrollReveal>
+
+      <ul>
+        {projectsByOrder.map((p) => (
+          <li>
+            <a
+              href={getLocalizedPath(lang, `/work/${p.slug}`)}
+              class="group grid grid-cols-12 gap-4 py-5 lg:py-6 border-t border-[var(--rule)] items-baseline cursor-pointer transition-colors duration-300"
+            >
+              <span class="col-span-2 lg:col-span-1 font-mono text-xs text-[var(--muted)]">{p.number}</span>
+              <span class="col-span-10 lg:col-span-7 font-display text-xl lg:text-2xl text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors duration-300">
+                {getLocalizedContent(p.title, lang)}
+              </span>
+              <span class="col-span-8 lg:col-span-3 font-mono text-xs uppercase tracking-[0.15em] text-[var(--muted)]">
+                {p.discipline.map((d) => disciplineLabel[d as Discipline]?.[lang] ?? d).join(' · ')}
+              </span>
+              <span class="col-span-4 lg:col-span-1 font-mono text-xs text-[var(--muted)] text-right">{p.year}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="py-24 lg:py-32 bg-[var(--surface-alt)]">
+    <div class="container-page grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <ScrollReveal client:visible className="lg:col-span-7">
+        <p class="eyebrow mb-4">{t('home.about.eyebrow')}</p>
+        <h2 class="font-display font-semibold text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] mb-6 text-balance">
+          {t('home.about.title')}
+        </h2>
+        <p class="text-[var(--ink)] text-lg max-w-prose leading-relaxed mb-8">
+          {t('home.about.body')}
+        </p>
+        <a href={getLocalizedPath(lang, '/about')} class="btn-secondary">{t('home.about.cta')}</a>
+      </ScrollReveal>
+      <ScrollReveal client:visible delay={0.15} className="lg:col-span-5">
+        <div class="aspect-[3/4] overflow-hidden relative bg-[var(--accent-soft)]">
+          <div class="absolute inset-0 flex flex-col">
+            <div class="flex-1 flex items-end justify-start p-8">
+              <span class="font-display font-semibold leading-[0.8] text-[clamp(5rem,14vw,11rem)] text-[var(--ink)]">C</span>
+            </div>
+            <div class="flex-1 flex items-start justify-end p-8">
+              <span class="font-display italic font-normal leading-[0.8] text-[clamp(5rem,14vw,11rem)] text-[var(--accent)]">T</span>
+            </div>
+          </div>
+          <div class="absolute top-5 right-5 font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--ink)]/60">
+            Portrait — TK
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="py-24 lg:py-32">
+    <div class="container-page max-w-3xl">
+      <ScrollReveal client:visible>
+        <p class="eyebrow mb-4">{t('home.contact.eyebrow')}</p>
+        <h2 class="font-display font-semibold text-[clamp(2.5rem,6vw,5rem)] leading-[1.02] mb-6 text-balance">
+          {t('home.contact.title')}<span class="text-[var(--accent)]">.</span>
+        </h2>
+        <p class="text-[var(--ink)] text-lg max-w-prose mb-10 text-pretty">
+          {t('home.contact.body')}
+        </p>
+        <div class="flex flex-wrap items-center gap-6">
+          <a href={getLocalizedPath(lang, '/contact')} class="btn-primary">{t('home.contact.cta')}</a>
+          <a href={`mailto:${siteConfig.email}`} class="btn-ghost">{siteConfig.email}</a>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+</BaseLayout>
