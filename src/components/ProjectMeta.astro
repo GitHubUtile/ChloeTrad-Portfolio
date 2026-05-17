@@ -1,0 +1,42 @@
+---
+import { type Lang } from '../i18n/languages';
+import { useTranslation, getLocalizedContent } from '../i18n/utils';
+import type { Project } from '../content/projects';
+import { disciplineLabel, type Discipline } from '../data/disciplines';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+}
+
+const { project, lang } = Astro.props;
+const t = useTranslation(lang);
+const disciplines = project.discipline
+  .map((d) => disciplineLabel[d as Discipline]?.[lang] ?? d)
+  .filter(Boolean);
+---
+
+<dl class="grid grid-cols-2 md:grid-cols-5 gap-x-6 gap-y-6 py-8 border-t border-b border-[var(--rule)] font-mono text-sm">
+  <div>
+    <dt class="eyebrow mb-2">{t('case.meta.year')}</dt>
+    <dd class="text-[var(--ink)]">{project.year}</dd>
+  </div>
+  {project.client && (
+    <div>
+      <dt class="eyebrow mb-2">{t('case.meta.client')}</dt>
+      <dd class="text-[var(--ink)]">{project.client}</dd>
+    </div>
+  )}
+  <div>
+    <dt class="eyebrow mb-2">{t('case.meta.role')}</dt>
+    <dd class="text-[var(--ink)]">{getLocalizedContent(project.role, lang)}</dd>
+  </div>
+  <div>
+    <dt class="eyebrow mb-2">{t('case.meta.discipline')}</dt>
+    <dd class="text-[var(--ink)]">{disciplines.join(' · ')}</dd>
+  </div>
+  <div class="col-span-2 md:col-span-1">
+    <dt class="eyebrow mb-2">{t('case.meta.tools')}</dt>
+    <dd class="text-[var(--ink)] leading-relaxed">{project.tools.join(', ')}</dd>
+  </div>
+</dl>

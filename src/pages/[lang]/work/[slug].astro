@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ScrollReveal from '../../../islands/ScrollReveal.tsx';
+import ChromaticTheme from '../../../islands/ChromaticTheme.tsx';
+import ProjectMeta from '../../../components/ProjectMeta.astro';
+import { type Lang, languages } from '../../../i18n/languages';
+import { useTranslation, getLocalizedPath, getLocalizedContent } from '../../../i18n/utils';
+import { projects, getNextProject, getPrevProject, type Project } from '../../../content/projects';
+
+export function getStaticPaths() {
+  const out: { params: { lang: string; slug: string } }[] = [];
+  for (const lang of Object.keys(languages)) {
+    for (const p of projects) {
+      out.push({ params: { lang, slug: p.slug } });
+    }
+  }
+  return out;
+}
+
+const { lang, slug } = Astro.params as { lang: Lang; slug: string };
+const t = useTranslation(lang);
+const project = projects.find((p) => p.slug === slug) as Project | undefined;
+if (!project) return Astro.redirect(getLocalizedPath(lang, '/work'));
+const next = getNextProject(slug);
+const prev = getPrevProject(slug);
+const title = getLocalizedContent(project.title, lang);
+const tagline = getLocalizedContent(project.tagline, lang);
+const brief = getLocalizedContent(project.brief, lang);
+---
+
+<BaseLayout title={title} description={tagline} lang={lang} accent={project.accent}>
+  <ChromaticTheme client:load accent={project.accent} />
+
+  <!-- TITLE BLOCK -->
+  <section class="pt-32 lg:pt-40 pb-10 lg:pb-16">
+    <div class="container-page">
+      <a href={getLocalizedPath(lang, '/work')} class="inline-flex items-center gap-2 text-sm font-mono text-[var(--muted)] hover:text-[var(--ink)] transition-colors duration-200 mb-10 cursor-pointer">
+        ← {t('case.back')}
+      </a>
+
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-mono text-sm text-[var(--accent)]">{project.number}</span>
+        <span class="w-12 h-px bg-[var(--rule)]"></span>
+        <span class="eyebrow">{project.discipline.join(' · ')}</span>
+      </div>
+
+      <h1 class="font-display font-semibold text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.0] text-balance mb-6">
+        {title}
+      </h1>
+      <p class="font-display italic text-xl lg:text-2xl text-[var(--muted)] max-w-2xl text-pretty">
+        {tagline}
+      </p>
+    </div>
+  </section>
+
+  <!-- COVER -->
+  <section class="pb-16 lg:pb-24">
+    <div class="container-page">
+      <ScrollReveal client:load>
+        {project.cover2 ? (
+          <div class="grid grid-cols-2 gap-3 lg:gap-4">
+            <div class="overflow-hidden bg-[var(--surface-alt)]">
+              <img src={project.cover} alt={title} class="w-full h-auto block" loading="eager" />
+            </div>
+            <div class="overflow-hidden bg-[var(--surface-alt)]">
+              <img src={project.cover2} alt="" class="w-full h-auto block" loading="eager" />
+            </div>
+          </div>
+        ) : (
+          <div class="relative aspect-[16/10] lg:aspect-[16/9] overflow-hidden bg-[var(--surface-alt)]">
+            <img
+              src={project.cover}
+              alt={title}
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        )}
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- META -->
+  <section class="pb-16 lg:pb-24">
+    <div class="container-page">
+      <ProjectMeta project={project} lang={lang} />
+    </div>
+  </section>
+
+  <!-- BRIEF -->
+  <section class="pb-16 lg:pb-24">
+    <div class="container-page max-w-4xl">
+      <ScrollReveal client:load>
+        <p class="eyebrow mb-6">{t('case.eyebrow.brief')}</p>
+        <p class="font-sans text-[clamp(1.1rem,2vw,1.4rem)] leading-[1.75] text-pretty text-[var(--ink)]">
+          {brief}
+        </p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- SECTIONS -->
+  {project.sections.length > 0 && (
+    <section class="pb-16 lg:pb-24">
+      <div class="container-page space-y-16 lg:space-y-24">
+        {project.sections.map((section, sIdx) => {
+          if (section.type === 'image-full') {
+            return (
+              <ScrollReveal client:load>
+                <figure>
+                  <img
+                    src={section.src}
+                    alt={section.caption ? getLocalizedContent(section.caption, lang) : ''}
+                    loading={sIdx < 2 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    class="w-full h-auto block"
+                  />
+                  {section.caption && (
+                    <figcaption class="mt-3 font-mono text-xs text-[var(--muted)] tracking-wide">
+                      {getLocalizedContent(section.caption, lang)}
+                    </figcaption>
+                  )}
+                </figure>
+              </ScrollReveal>
+            );
+          }
+          if (section.type === 'image-pair') {
+            return (
+              <ScrollReveal client:load>
+                <figure>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+                    <div>
+                      <img src={section.left} alt="" loading={sIdx < 2 ? 'eager' : 'lazy'} decoding="async" class="w-full h-auto block" />
+                    </div>
+                    <div>
+                      <img src={section.right} alt="" loading={sIdx < 2 ? 'eager' : 'lazy'} decoding="async" class="w-full h-auto block" />
+                    </div>
+                  </div>
+                  {section.caption && (
+                    <figcaption class="mt-3 font-mono text-xs text-[var(--muted)] tracking-wide">
+                      {getLocalizedContent(section.caption, lang)}
+                    </figcaption>
+                  )}
+                </figure>
+              </ScrollReveal>
+            );
+          }
+          if (section.type === 'image-triplet') {
+            const items = (section.items ?? []) as string[];
+            return (
+              <ScrollReveal client:load>
+                <figure>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+                    {items.map((src) => (
+                      <div class="overflow-hidden bg-[var(--surface-alt)]">
+                        <img src={src} alt="" loading="lazy" class="w-full h-auto" />
+                      </div>
+                    ))}
+                  </div>
+                  {section.caption && (
+                    <figcaption class="mt-3 font-mono text-xs text-[var(--muted)] tracking-wide">
+                      {getLocalizedContent(section.caption, lang)}
+                    </figcaption>
+                  )}
+                </figure>
+              </ScrollReveal>
+            );
+          }
+          if (section.type === 'pullquote') {
+            return (
+              <ScrollReveal client:load>
+                <blockquote class="max-w-4xl mx-auto text-center py-8 lg:py-16">
+                  <p class="font-display italic text-[clamp(1.75rem,4vw,3rem)] leading-[1.2] text-balance text-[var(--ink)]">
+                    "{section.text ? getLocalizedContent(section.text, lang) : ''}"
+                  </p>
+                </blockquote>
+              </ScrollReveal>
+            );
+          }
+          if (section.type === 'deliverables') {
+            const items = (section.items ?? []) as { en: string; fr: string }[];
+            return (
+              <ScrollReveal client:load>
+                <div class="border-t border-[var(--rule)] pt-8">
+                  <p class="eyebrow mb-6">{t('case.eyebrow.outcome')}</p>
+                  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
+                    {items.map((item) => (
+                      <li class="flex items-baseline gap-3 font-display text-lg lg:text-xl">
+                        <span class="text-[var(--accent)] text-sm">●</span>
+                        <span>{getLocalizedContent(item, lang)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+            );
+          }
+          return null;
+        })}
+      </div>
+    </section>
+  )}
+
+  <!-- RESOURCES -->
+  {project.resources.length > 0 && (
+    <section class="pb-24 lg:pb-32">
+      <div class="container-page max-w-4xl border-t border-[var(--rule)] pt-12">
+        <p class="eyebrow mb-6">{lang === 'fr' ? 'Ressources' : 'Resources'}</p>
+        <ul class="space-y-3">
+          {project.resources.map((r) => (
+            <li>
+              <a
+                href={r.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex items-baseline gap-3 font-display text-lg lg:text-xl cursor-pointer hover:text-[var(--accent)] transition-colors duration-200"
+              >
+                <span class="text-[var(--accent)] text-sm">↗</span>
+                <span class="underline decoration-[var(--rule)] underline-offset-4 group-hover:decoration-[var(--accent)] transition-colors duration-200">
+                  {getLocalizedContent(r.label, lang)}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <!-- NEXT PROJECT -->
+  <section class="border-t border-[var(--rule)]">
+    <a
+      href={getLocalizedPath(lang, `/work/${next.slug}`)}
+      class="block group relative overflow-hidden cursor-pointer"
+    >
+      <div class="container-page py-16 lg:py-24 relative z-10">
+        <p class="eyebrow mb-3">{t('case.next')}</p>
+        <h2 class="font-sans font-bold text-[clamp(2rem,6vw,5rem)] leading-[1.0] text-balance group-hover:text-[var(--accent)] transition-colors duration-300">
+          {getLocalizedContent(next.title, lang)} →
+        </h2>
+        <p class="mt-2 font-mono text-xs uppercase tracking-[0.15em] text-[var(--muted)]">
+          {next.discipline.join(' · ')} · {next.year}
+        </p>
+      </div>
+    </a>
+
+    <!-- PREV PROJECT -->
+    <a
+      href={getLocalizedPath(lang, `/work/${prev.slug}`)}
+      class="block group border-t border-[var(--rule)] cursor-pointer"
+    >
+      <div class="container-page py-8 lg:py-10 flex items-center justify-between gap-6">
+        <div>
+          <p class="eyebrow mb-1">{lang === 'fr' ? 'Projet précédent' : 'Previous project'}</p>
+          <span class="font-sans font-bold text-lg lg:text-xl text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors duration-300">
+            ← {getLocalizedContent(prev.title, lang)}
+          </span>
+        </div>
+        <p class="font-mono text-xs uppercase tracking-[0.15em] text-[var(--muted)] shrink-0 hidden sm:block">
+          {prev.discipline.join(' · ')} · {prev.year}
+        </p>
+      </div>
+    </a>
+  </section>
+</BaseLayout>
