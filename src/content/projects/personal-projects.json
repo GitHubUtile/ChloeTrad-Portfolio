@@ -1,0 +1,89 @@
+{
+  "slug": "personal-projects",
+  "number": "08",
+  "title": {
+    "en": "Personal Projects (2020-)",
+    "fr": "Projets personnels (2020-)"
+  },
+  "tagline": {
+    "en": "Pointillism collage, a self-portrait, and a what-if brand series.",
+    "fr": "Collage pointilliste, un autoportrait, et une série \"et si les marques\"."
+  },
+  "discipline": [
+    "illustration",
+    "print"
+  ],
+  "year": "2020-2025",
+  "role": {
+    "en": "Designer, Creator",
+    "fr": "Designer, Créatrice"
+  },
+  "client": "Personal stand-alone projects",
+  "tools": [
+    "Adobe Photoshop",
+    "Adobe Illustrator"
+  ],
+  "accent": "#D4A03B",
+  "featured": false,
+  "order": 8,
+  "cover": "/images/projects/personal-projects/2-in-my-mind.png",
+  "brief": {
+    "en": "Three personal threads I keep coming back to. A Photoshop collage that brings out the texture and depth of pointillism and quietly winks at how modern printers work. An Adobe Illustrator self-portrait that hides everything I think about inside the silhouette. And an older series of illustrations imagining what would happen if well-known brands made things they were never supposed to make.",
+    "fr": "Trois fils personnels sur lesquels je reviens. Un collage Photoshop qui fait ressortir la texture et la profondeur du pointillisme, et qui cligne discrètement de l'œil à la manière dont impriment les imprimantes actuelles. Un autoportrait Adobe Illustrator qui cache à l'intérieur de la silhouette tout ce que j'ai en tête. Et une série plus ancienne d'illustrations imaginant ce que feraient les marques connues si elles fabriquaient ce qu'elles n'étaient pas censées fabriquer."
+  },
+  "sections": [
+    {
+      "type": "image-full",
+      "src": "/images/projects/personal-projects/1-pointillism.jpg",
+      "caption": {
+        "en": "Pointillism collage, Photoshop.",
+        "fr": "Collage pointilliste, Photoshop."
+      }
+    },
+    {
+      "type": "image-full",
+      "src": "/images/projects/personal-projects/2-in-my-mind.png",
+      "caption": {
+        "en": "In My Mind - self-portrait, Illustrator.",
+        "fr": "In My Mind - autoportrait, Illustrator."
+      }
+    },
+    {
+      "type": "pullquote",
+      "text": {
+        "en": "What if Pepsi made perfume, Louis Vuitton made toilet paper, and McDonald's made a handbag?",
+        "fr": "Et si Pepsi faisait du parfum, Louis Vuitton du papier toilette, et McDonald's un sac à main ?"
+      }
+    },
+    {
+      "type": "image-triplet",
+      "items": [
+        "/images/projects/personal-projects/3-pepsi.png",
+        "/images/projects/personal-projects/4-lv.png",
+        "/images/projects/personal-projects/5-mcd.png"
+      ],
+      "caption": {
+        "en": "What-if brand series.",
+        "fr": "Série \"et si les marques\"."
+      }
+    },
+    {
+      "type": "deliverables",
+      "items": [
+        {
+          "en": "Pointillism Photoshop collage",
+          "fr": "Collage pointilliste Photoshop"
+        },
+        {
+          "en": "Self-portrait Illustrator piece",
+          "fr": "Autoportrait sous Illustrator"
+        },
+        {
+          "en": "What-if brand illustration series",
+          "fr": "Série d'illustrations \"et si les marques\""
+        }
+      ]
+    }
+  ],
+  "resources": []
+}
